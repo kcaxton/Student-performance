@@ -26,9 +26,9 @@ This project explores the Student Performance dataset (1000 students, 8 features
 - Modeling Approach: Built separate Linear Regression models for each target (math, reading, writing scores) using 80/20 train-test split with random_state=42 for reproducibility.
 
 - Model Performance (RMSE / R²):
-    Math	RMSE~14.2	R²=0.18	-Weak predictive power
-    Reading	RMSE~13.8	R²=0.16	-Weak predictive power
-    Writing	RMSE~13.3	R²=0.26	-Best performance, still limited
+    - Math	RMSE~14.2	R²=0.18	-Weak predictive power
+    - Reading	RMSE~13.8	R²=0.16	-Weak predictive power
+    - Writing	RMSE~13.3	R²=0.26	-Best performance, still limited
   
 - Key Findings from Coefficients:
     - lunch_standard (+8 to +11 points): Strongest positive predictor across all subjects — socioeconomic status matters
