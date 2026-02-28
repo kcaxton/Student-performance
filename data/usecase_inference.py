@@ -10,8 +10,8 @@ import pandas as pd
 import numpy as np
 
 ROOT = Path(__file__).parent
-MODEL_PATH = ROOT / 'artifacts' / 'lr_math.joblib'  # Changed from rf_math
-DATA_CSV = ROOT / 'StudentsPerformance.csv'
+MODEL_PATH = ROOT / 'artifacts' / 'lr_math.joblib'  
+DATA_CSV = ROOT / '00_StudentsPerformance.csv'
 ARTIFACTS = ROOT / 'artifacts'
 ARTIFACTS.mkdir(exist_ok=True)
 
@@ -25,7 +25,7 @@ print(f"Loaded model: {MODEL_PATH}")
 # Reconstruct feature names from original dataset encoding
 cat_cols = ['gender','race/ethnicity','parental level of education','lunch','test preparation course']
 if not DATA_CSV.exists():
-    raise SystemExit(f"Data CSV not found at {DATA_CSV}. Place StudentsPerformance.csv in {ROOT}")
+    raise SystemExit(f"Data CSV not found at {DATA_CSV}. Place 00_StudentsPerformance.csv in {ROOT}")
 
 df = pd.read_csv(DATA_CSV)
 df_encoded = pd.get_dummies(df, columns=cat_cols, drop_first=True)
@@ -59,8 +59,3 @@ X_sample = X_sample.reindex(columns=feature_names, fill_value=0)
 
 pred = model.predict(X_sample)
 print(f"Predicted math score (single sample): {pred[0]:.2f}")
-
-# Batch example: predict first 5 rows from the encoded training data
-X_train_like = df_encoded.drop(['math score','reading score','writing score'], axis=1)
-batch_preds = model.predict(X_train_like.iloc[:5])
-print("Predictions for first 5 rows of original dataset:", [round(float(p),2) for p in batch_preds])
