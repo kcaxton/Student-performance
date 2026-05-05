@@ -11,6 +11,7 @@ This project explores the Student Performance dataset (1000 students, 8 features
   - Math: +5.6 points
   - Reading: +7.4 points
   - Writing: +9.9 points
+  
 - Boxplots confirm higher median and reduced spread for completed test prep
 - Outliers exist but main patterns are clear
 
